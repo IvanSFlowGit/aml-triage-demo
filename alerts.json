@@ -1,0 +1,48 @@
+[
+  {
+    "id": "ALRT-1042",
+    "customer": "Meridian Trading Ltd",
+    "customer_profile": "SME FX broker, declared monthly volume ~GBP 80k",
+    "period": "last 72 hours",
+    "summary": "9 outbound transfers of GBP 9,200-9,700 to 3 newly added counterparties, followed by a single inbound of GBP 84,000 from a fourth party.",
+    "signals": {
+      "structuring": "9 transfers each just under the GBP 10,000 reporting threshold within 72h",
+      "rapid_movement": "inbound GBP 84k moved out across the 9 transfers within 36h of arrival",
+      "counterparty_new": "3 of 4 counterparties added in the last 5 days",
+      "amount_over_expected": "72h outflow (~GBP 85k) exceeds declared monthly volume"
+    }
+  },
+  {
+    "id": "ALRT-1043",
+    "customer": "Anna Kowalska",
+    "customer_profile": "Retail account, salaried, avg balance GBP 3k",
+    "period": "last 24 hours",
+    "summary": "Account dormant for 14 months suddenly receives GBP 22,000 from an exchange and forwards GBP 21,500 to a wallet flagged on an internal watchlist.",
+    "signals": {
+      "dormant_then_active": "no activity for 14 months, then GBP 22k in/out in one day",
+      "rapid_movement": "98% of inbound forwarded within 4 hours",
+      "high_risk_jurisdiction": "forwarding wallet resolves to a high-risk jurisdiction VASP"
+    }
+  },
+  {
+    "id": "ALRT-1044",
+    "customer": "Delta Logistics GmbH",
+    "customer_profile": "Freight company, steady GBP 200k/month across EU corridors",
+    "period": "last 7 days",
+    "summary": "Routine supplier payments, one new Italian counterparty. No threshold or velocity anomalies.",
+    "signals": {
+      "counterparty_new": "one first-time counterparty, invoice-matched"
+    }
+  },
+  {
+    "id": "ALRT-1045",
+    "customer": "Yusuf Rahman",
+    "customer_profile": "Retail, freelance consultant",
+    "period": "last 48 hours",
+    "summary": "Inbound GBP 15,000 from a counterparty whose name fuzzy-matches a sanctions list entry (0.86 similarity).",
+    "signals": {
+      "sanctions_name_match": "counterparty 'Rahim Yusufov' matches OFAC-style list entry at 0.86 similarity",
+      "amount_over_expected": "single inbound 5x the customer's typical transaction size"
+    }
+  }
+]

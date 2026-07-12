@@ -1,0 +1,148 @@
+{
+  "alerts": [
+    {
+      "id": "ALRT-1042",
+      "customer": "Meridian Trading Ltd",
+      "customer_profile": "SME FX broker, declared monthly volume ~GBP 80k",
+      "period": "last 72 hours",
+      "score": 85,
+      "disposition": "ESCALATE",
+      "factors": [
+        {
+          "rule": "structuring",
+          "points": 35,
+          "detail": "9 transfers each just under the GBP 10,000 reporting threshold within 72h"
+        },
+        {
+          "rule": "rapid_movement",
+          "points": 25,
+          "detail": "inbound GBP 84k moved out across the 9 transfers within 36h of arrival"
+        },
+        {
+          "rule": "counterparty_new",
+          "points": 10,
+          "detail": "3 of 4 counterparties added in the last 5 days"
+        },
+        {
+          "rule": "amount_over_expected",
+          "points": 15,
+          "detail": "72h outflow (~GBP 85k) exceeds declared monthly volume"
+        }
+      ],
+      "explanation": {
+        "headline": "ALRT-1042: ESCALATE - 4 rules fired",
+        "typology": "see contributing rules",
+        "why_it_fired": [
+          "structuring: 9 transfers each just under the GBP 10,000 reporting threshold within 72h",
+          "rapid_movement: inbound GBP 84k moved out across the 9 transfers within 36h of arrival",
+          "counterparty_new: 3 of 4 counterparties added in the last 5 days",
+          "amount_over_expected: 72h outflow (~GBP 85k) exceeds declared monthly volume"
+        ],
+        "what_to_check": [
+          "Review contributing rules above against the customer profile."
+        ],
+        "disposition_restated": "ESCALATE",
+        "_note": "LLM unavailable - showing deterministic output only."
+      }
+    },
+    {
+      "id": "ALRT-1043",
+      "customer": "Anna Kowalska",
+      "customer_profile": "Retail account, salaried, avg balance GBP 3k",
+      "period": "last 24 hours",
+      "score": 60,
+      "disposition": "REVIEW",
+      "factors": [
+        {
+          "rule": "rapid_movement",
+          "points": 25,
+          "detail": "98% of inbound forwarded within 4 hours"
+        },
+        {
+          "rule": "high_risk_jurisdiction",
+          "points": 20,
+          "detail": "forwarding wallet resolves to a high-risk jurisdiction VASP"
+        },
+        {
+          "rule": "dormant_then_active",
+          "points": 15,
+          "detail": "no activity for 14 months, then GBP 22k in/out in one day"
+        }
+      ],
+      "explanation": {
+        "headline": "ALRT-1043: REVIEW - 3 rules fired",
+        "typology": "see contributing rules",
+        "why_it_fired": [
+          "rapid_movement: 98% of inbound forwarded within 4 hours",
+          "high_risk_jurisdiction: forwarding wallet resolves to a high-risk jurisdiction VASP",
+          "dormant_then_active: no activity for 14 months, then GBP 22k in/out in one day"
+        ],
+        "what_to_check": [
+          "Review contributing rules above against the customer profile."
+        ],
+        "disposition_restated": "REVIEW",
+        "_note": "LLM unavailable - showing deterministic output only."
+      }
+    },
+    {
+      "id": "ALRT-1045",
+      "customer": "Yusuf Rahman",
+      "customer_profile": "Retail, freelance consultant",
+      "period": "last 48 hours",
+      "score": 55,
+      "disposition": "REVIEW",
+      "factors": [
+        {
+          "rule": "sanctions_name_match",
+          "points": 40,
+          "detail": "counterparty 'Rahim Yusufov' matches OFAC-style list entry at 0.86 similarity"
+        },
+        {
+          "rule": "amount_over_expected",
+          "points": 15,
+          "detail": "single inbound 5x the customer's typical transaction size"
+        }
+      ],
+      "explanation": {
+        "headline": "ALRT-1045: REVIEW - 2 rules fired",
+        "typology": "see contributing rules",
+        "why_it_fired": [
+          "sanctions_name_match: counterparty 'Rahim Yusufov' matches OFAC-style list entry at 0.86 similarity",
+          "amount_over_expected: single inbound 5x the customer's typical transaction size"
+        ],
+        "what_to_check": [
+          "Review contributing rules above against the customer profile."
+        ],
+        "disposition_restated": "REVIEW",
+        "_note": "LLM unavailable - showing deterministic output only."
+      }
+    },
+    {
+      "id": "ALRT-1044",
+      "customer": "Delta Logistics GmbH",
+      "customer_profile": "Freight company, steady GBP 200k/month across EU corridors",
+      "period": "last 7 days",
+      "score": 10,
+      "disposition": "MONITOR",
+      "factors": [
+        {
+          "rule": "counterparty_new",
+          "points": 10,
+          "detail": "one first-time counterparty, invoice-matched"
+        }
+      ],
+      "explanation": {
+        "headline": "ALRT-1044: MONITOR - 1 rules fired",
+        "typology": "see contributing rules",
+        "why_it_fired": [
+          "counterparty_new: one first-time counterparty, invoice-matched"
+        ],
+        "what_to_check": [
+          "Review contributing rules above against the customer profile."
+        ],
+        "disposition_restated": "MONITOR",
+        "_note": "LLM unavailable - showing deterministic output only."
+      }
+    }
+  ]
+}
