@@ -11,8 +11,20 @@ Untrusted input (alert text) is fenced and labelled as data, not instructions.
 Output is schema-shaped and validated before use. Synthetic data only - no real PII.
 """
 from __future__ import annotations
-import os, json
+import os, json, re
 from scorer import ScoreResult
+
+
+def _as_list(v) -> list[str]:
+    """Coerce a field to a clean list of bullets - the model sometimes returns prose."""
+    if isinstance(v, list):
+        return [str(x).strip() for x in v if str(x).strip()]
+    if isinstance(v, str):
+        s = v.strip()
+        parts = re.split(r"\n+", s) if "\n" in s else re.split(r"(?<=[.;])\s+(?=[A-Z(0-9])", s)
+        parts = [re.sub(r"^[\-\*\d\.\)\s]+", "", p).strip() for p in parts]
+        return [p for p in parts if p]
+    return []
 
 MODEL = "claude-haiku-4-5-20251001"
 
@@ -75,6 +87,8 @@ def explain(alert: dict, result: ScoreResult) -> dict:
         data["disposition_restated"] = result.disposition
         for k in ("headline", "typology", "why_it_fired", "what_to_check"):
             data.setdefault(k, _fallback(alert, result)[k])
+        data["why_it_fired"] = _as_list(data["why_it_fired"])
+        data["what_to_check"] = _as_list(data["what_to_check"])
         return data
     except Exception:
         return _fallback(alert, result)

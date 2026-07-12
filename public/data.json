@@ -30,19 +30,22 @@
         }
       ],
       "explanation": {
-        "headline": "ALRT-1042: ESCALATE - 4 rules fired",
-        "typology": "see contributing rules",
+        "headline": "Potential structuring activity: rapid movement of large inbound funds via multiple sub-threshold transfers to newly added counterparties",
+        "typology": "Structuring / Layering (AML typology)",
         "why_it_fired": [
-          "structuring: 9 transfers each just under the GBP 10,000 reporting threshold within 72h",
-          "rapid_movement: inbound GBP 84k moved out across the 9 transfers within 36h of arrival",
-          "counterparty_new: 3 of 4 counterparties added in the last 5 days",
-          "amount_over_expected: 72h outflow (~GBP 85k) exceeds declared monthly volume"
+          "The alert combines four independent risk signals: (1) nine consecutive outbound transfers each just under the GBP 10,000 reporting threshold within a 72-hour window\u2014a classic structuring pattern;",
+          "(2) rapid onward movement of an inbound GBP 84k within 36 hours, suggesting minimal hold or review;",
+          "(3) three of four destination counterparties added to the customer's approved list within the last 5 days, indicating new and unvetted relationships; and (4) the total 72-hour outflow (~GBP 85k) matches the inbound amount and exceeds the customer's declared typical monthly volume, compressing normal activity into a very short timeframe."
         ],
         "what_to_check": [
-          "Review contributing rules above against the customer profile."
+          "Verify whether the 9 transfers and the inbound receipt are genuinely linked (same underlying transaction or invoice) or independent activity",
+          "Review the business rationale for each transfer: are they consistent with the customer's declared FX broker activity?",
+          "Check the identity, location, and business relationship of the three newly added counterparties\u2014verify KYC documentation and any existing sanctions/adverse media",
+          "Examine the source of the inbound GBP 84k: who sent it, from which country/entity, and under what stated purpose",
+          "Confirm whether the customer has a legitimate explanation for why activity of this scale and velocity deviates from their profile and declared monthly volume",
+          "Review historical patterns for the customer: is this a one-off spike or part of an emerging pattern?"
         ],
-        "disposition_restated": "ESCALATE",
-        "_note": "LLM unavailable - showing deterministic output only."
+        "disposition_restated": "ESCALATE"
       }
     },
     {
@@ -70,18 +73,17 @@
         }
       ],
       "explanation": {
-        "headline": "ALRT-1043: REVIEW - 3 rules fired",
-        "typology": "see contributing rules",
+        "headline": "Dormant retail account suddenly receives and rapidly forwards substantial funds to high-risk jurisdiction",
+        "typology": "Potential money laundering / account takeover / layering scheme",
         "why_it_fired": [
-          "rapid_movement: 98% of inbound forwarded within 4 hours",
-          "high_risk_jurisdiction: forwarding wallet resolves to a high-risk jurisdiction VASP",
-          "dormant_then_active: no activity for 14 months, then GBP 22k in/out in one day"
+          "Three contributing factors combined to generate a 60/100 risk score: (1) Account showed no activity for 14 months then processed GBP 22,000 inbound and GBP 21,500 outbound in a single day, inconsistent with stated retail/salaried profile;",
+          "(2) 98% of received funds were forwarded within 4 hours, indicating rapid transit rather than genuine account use;",
+          "(3) Destination wallet resolves to a VASP in a high-risk jurisdiction, elevating the risk profile of the fund transfer."
         ],
         "what_to_check": [
-          "Review contributing rules above against the customer profile."
+          "Verify the source of the inbound GBP 22,000 (legitimate salary/expected transfer vs. third-party movement); confirm customer authorization for the rapid outbound transfer; review the nature and prior relationship (if any) with the receiving wallet and its jurisdiction; examine account access logs for signs of compromise or unusual login patterns; assess whether the customer profile (salaried, GBP 3k typical balance) aligns with sudden activity of this magnitude; check whether the receiving wallet is flagged for sanctions, fraud, or other financial crime concerns."
         ],
-        "disposition_restated": "REVIEW",
-        "_note": "LLM unavailable - showing deterministic output only."
+        "disposition_restated": "REVIEW"
       }
     },
     {
@@ -104,17 +106,21 @@
         }
       ],
       "explanation": {
-        "headline": "ALRT-1045: REVIEW - 2 rules fired",
-        "typology": "see contributing rules",
+        "headline": "Sanctions name match and unusually large inbound transfer flagged for review",
+        "typology": "Potential sanctions evasion; structuring or unusual activity",
         "why_it_fired": [
-          "sanctions_name_match: counterparty 'Rahim Yusufov' matches OFAC-style list entry at 0.86 similarity",
-          "amount_over_expected: single inbound 5x the customer's typical transaction size"
+          "Two rules contributed to the alert: (1) The counterparty name 'Rahim Yusufov' achieved 0.86 fuzzy-match similarity to an entry on an OFAC-style sanctions list (+40 points);",
+          "(2) The inbound transfer of GBP 15,000 is approximately 5\u00d7 the customer's typical transaction size (+15 points).",
+          "Combined score of 55/100 triggered REVIEW disposition."
         ],
         "what_to_check": [
-          "Review contributing rules above against the customer profile."
+          "Verify the identity and legitimacy of counterparty 'Rahim Yusufov' against current OFAC and other relevant sanctions lists",
+          "Confirm whether the customer has a plausible business reason for this inbound transfer (e.g., client payment, project milestone, consulting engagement)",
+          "Review the customer's stated occupation (freelance consultant) and transaction history to determine if GBP 15,000 aligns with expected contract values",
+          "Examine any prior transactions with this counterparty or similar names",
+          "Check for any customer self-identification or documentation that explains the source of funds"
         ],
-        "disposition_restated": "REVIEW",
-        "_note": "LLM unavailable - showing deterministic output only."
+        "disposition_restated": "REVIEW"
       }
     },
     {
@@ -132,16 +138,20 @@
         }
       ],
       "explanation": {
-        "headline": "ALRT-1044: MONITOR - 1 rules fired",
-        "typology": "see contributing rules",
+        "headline": "Low-risk alert: routine payments with single new supplier",
+        "typology": "New counterparty introduction",
         "why_it_fired": [
-          "counterparty_new: one first-time counterparty, invoice-matched"
+          "Delta Logistics GmbH made a payment to a first-time Italian supplier within the last 7 days.",
+          "The transaction was invoice-matched, indicating documented business justification.",
+          "No velocity or threshold anomalies were detected; payments remain consistent with the customer's established pattern of \u20ac200k monthly across EU corridors."
         ],
         "what_to_check": [
-          "Review contributing rules above against the customer profile."
+          "Verify the invoice documentation supporting the Italian counterparty payment",
+          "Confirm the Italian supplier's business registration and legitimacy",
+          "Review whether this supplier aligns with Delta Logistics' freight operations (e.g., port services, customs, logistics partners)",
+          "Check if similar suppliers have been onboarded previously in this corridor"
         ],
-        "disposition_restated": "MONITOR",
-        "_note": "LLM unavailable - showing deterministic output only."
+        "disposition_restated": "MONITOR"
       }
     }
   ]
