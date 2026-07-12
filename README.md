@@ -21,4 +21,4 @@ python3 -m http.server -d public 8080          # or deploy public/ to any static
 
 Run `gen.py` with the key on your own machine at build time; the deployed site is just the static `public/` folder. Synthetic data only - no real customers, no PII.
 
-Built by Ivan Skachek - ran AML/KYC/KYT transaction monitoring inside a crypto exchange, now builds production AI agents. Live agent: paypilot.fly.dev
+Built by Ivan S - ran AML/KYC/KYT transaction monitoring inside a crypto exchange, now builds production AI agents. Live agent: paypilot.fly.dev
