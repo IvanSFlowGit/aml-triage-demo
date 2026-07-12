@@ -33,14 +33,14 @@
         "headline": "Potential structuring activity: rapid movement of large inbound funds via multiple sub-threshold transfers to newly added counterparties",
         "typology": "Structuring / Layering (AML typology)",
         "why_it_fired": [
-          "The alert combines four independent risk signals: (1) nine consecutive outbound transfers each just under the GBP 10,000 reporting threshold within a 72-hour window\u2014a classic structuring pattern;",
+          "The alert combines four independent risk signals: (1) nine consecutive outbound transfers each just under the GBP 10,000 reporting threshold within a 72-hour window - a classic structuring pattern;",
           "(2) rapid onward movement of an inbound GBP 84k within 36 hours, suggesting minimal hold or review;",
           "(3) three of four destination counterparties added to the customer's approved list within the last 5 days, indicating new and unvetted relationships; and (4) the total 72-hour outflow (~GBP 85k) matches the inbound amount and exceeds the customer's declared typical monthly volume, compressing normal activity into a very short timeframe."
         ],
         "what_to_check": [
           "Verify whether the 9 transfers and the inbound receipt are genuinely linked (same underlying transaction or invoice) or independent activity",
           "Review the business rationale for each transfer: are they consistent with the customer's declared FX broker activity?",
-          "Check the identity, location, and business relationship of the three newly added counterparties\u2014verify KYC documentation and any existing sanctions/adverse media",
+          "Check the identity, location, and business relationship of the three newly added counterparties - verify KYC documentation and any existing sanctions/adverse media",
           "Examine the source of the inbound GBP 84k: who sent it, from which country/entity, and under what stated purpose",
           "Confirm whether the customer has a legitimate explanation for why activity of this scale and velocity deviates from their profile and declared monthly volume",
           "Review historical patterns for the customer: is this a one-off spike or part of an emerging pattern?"
@@ -110,7 +110,7 @@
         "typology": "Potential sanctions evasion; structuring or unusual activity",
         "why_it_fired": [
           "Two rules contributed to the alert: (1) The counterparty name 'Rahim Yusufov' achieved 0.86 fuzzy-match similarity to an entry on an OFAC-style sanctions list (+40 points);",
-          "(2) The inbound transfer of GBP 15,000 is approximately 5\u00d7 the customer's typical transaction size (+15 points).",
+          "(2) The inbound transfer of GBP 15,000 is approximately 5× the customer's typical transaction size (+15 points).",
           "Combined score of 55/100 triggered REVIEW disposition."
         ],
         "what_to_check": [
@@ -143,7 +143,7 @@
         "why_it_fired": [
           "Delta Logistics GmbH made a payment to a first-time Italian supplier within the last 7 days.",
           "The transaction was invoice-matched, indicating documented business justification.",
-          "No velocity or threshold anomalies were detected; payments remain consistent with the customer's established pattern of \u20ac200k monthly across EU corridors."
+          "No velocity or threshold anomalies were detected; payments remain consistent with the customer's established pattern of €200k monthly across EU corridors."
         ],
         "what_to_check": [
           "Verify the invoice documentation supporting the Italian counterparty payment",
